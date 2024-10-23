@@ -10,11 +10,27 @@ module.exports = {
           '@components': './src/components',
           '@features': './src/features',
           '@navigation': './src/navigation',
-          '@service': './src/service',
+          '@services': './src/services',
           '@state': './src/state',
           '@styles': './src/styles',
           '@utils': './src/utils',
+          '@hooks': './src/hooks',
         },
+      },
+    ],
+    [
+      'module:react-native-dotenv',
+      {
+        envName: 'APP_ENV',
+        moduleName: '@env',
+        path: '.env',
+        blocklist: null,
+        allowlist: null,
+        blacklist: null, // DEPRECATED
+        whitelist: null, // DEPRECATED
+        safe: false,
+        allowUndefined: true,
+        verbose: false,
       },
     ],
     'react-native-reanimated/plugin',

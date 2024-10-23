@@ -3,7 +3,7 @@ import {width} from './Responsive';
 export enum COLORS {
   primary = '#AF1125',
   white = '#fff',
-  secondry = '#C71E25',
+  secondary = '#C71E25',
   border = '#fff',
   text = '#222',
 }

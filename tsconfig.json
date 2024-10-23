@@ -8,10 +8,11 @@
       "@components/*": ["components/*"],
       "@features/*": ["features/*"],
       "@navigation/*": ["navigation/*"],
-      "@service/*": ["service/*"],
+      "@services/*": ["services/*"],
       "@state/*": ["state/*"],
       "@styles/*": ["styles/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@hooks/*": ["hooks/*"]
     }
   }
 }

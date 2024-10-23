@@ -8,12 +8,15 @@ import {playTTS} from '@utils/ttsListeners';
 import {playSound} from '@utils/voiceUtils';
 import {prompt} from '@utils/data';
 import SoundPlayer from 'react-native-sound-player';
+import Instructions from '@components/baymax/Instructions';
+import Pedometer from '@components/pedometer/Pedometer';
+import {askAI} from '@services/index';
 
 type Props = {};
 
 const BaymaxScreen: React.FC = (props: Props) => {
   const [showInstructions, setShowInstructions] = useState(false);
-  const [showLoader, setShowLoader] = useState(true);
+  const [showLoader, setShowLoader] = useState(false);
   const [showPedometer, setShowPedometer] = useState(false);
   const [message, setMessage] = useState('');
 
@@ -54,13 +57,29 @@ const BaymaxScreen: React.FC = (props: Props) => {
         playTTS('Focus on your breath!');
         playSound(sound);
         setMessage('meditation');
+        return;
       }
+
+      const gemini_data = await askAI(promptText);
+      setMessage(gemini_data);
+      playTTS(gemini_data);
+
+      if (type === 'happiness') {
+        setTimeout(() => {
+          playSound(sound);
+        }, 5000);
+      } else {
+        playSound(sound);
+      }
+
+      stopBlur();
     } catch (error) {
       handleErrorOccured(error);
     } finally {
       setShowLoader(false);
     }
   };
+
   // BigHero6 onPress handler
   const onOptionPressHandler = (type: string) => {
     setShowInstructions(true);
@@ -95,6 +114,31 @@ const BaymaxScreen: React.FC = (props: Props) => {
 
   return (
     <View style={styles.container}>
+      {message && (
+        <Instructions
+          onCross={() => {
+            startBlur();
+            setMessage('');
+            setShowLoader(true);
+            SoundPlayer.stop();
+            setShowInstructions(false);
+          }}
+          message={message}
+        />
+      )}
+      {showPedometer && (
+        <Pedometer
+          onCross={() => {
+            startBlur();
+            setMessage('');
+            setShowLoader(true);
+            setShowPedometer(false);
+            SoundPlayer.stop();
+            setShowInstructions(false);
+          }}
+          message={message}
+        />
+      )}
       <Background blurOpacity={blurOpacity} />
       {showLoader && (
         <View style={[StyleSheet.absoluteFill, styles.loaderContainer]}>
@@ -102,7 +146,7 @@ const BaymaxScreen: React.FC = (props: Props) => {
         </View>
       )}
 
-      {!showInstructions && <BigHero6 onPress={() => {}} />}
+      {!showInstructions && <BigHero6 onPress={onOptionPressHandler} />}
     </View>
   );
 };
@@ -112,7 +156,7 @@ export default BaymaxScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.secondry,
+    backgroundColor: COLORS.secondary,
     justifyContent: 'center',
     alignItems: 'center',
   },

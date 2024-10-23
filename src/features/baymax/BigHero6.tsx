@@ -1,5 +1,5 @@
 import Water from '@components/baymax/Water';
-import OptionItems from '@components/baymax/options/OptionItems';
+import OptionItems from '@components/options/OptionItems';
 import {height, width} from '@utils/Responsive';
 import {bigHero6Data} from '@utils/data';
 import React, {useEffect, useRef} from 'react';
