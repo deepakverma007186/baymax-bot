@@ -10,6 +10,7 @@ const Background: React.FC<{blurOpacity: any}> = ({blurOpacity}) => {
       <Image source={IMAGES.baymax} style={styles.img} />
       <Animated.View style={[StyleSheet.absoluteFill, {opacity: blurOpacity}]}>
         <BlurView
+          reducedTransparencyFallbackColor="#ffffff"
           style={StyleSheet.absoluteFill}
           blurType="ultraThinMaterial"
           blurAmount={2}
