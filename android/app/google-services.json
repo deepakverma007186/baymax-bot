@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "826116631076",
+    "project_id": "baymax-bot-45e09",
+    "storage_bucket": "baymax-bot-45e09.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:826116631076:android:2895f837685dd8794d06b1",
+        "android_client_info": {
+          "package_name": "com.baymaxbot"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7riB7eImgp57WNCnx_2kRvesIV4jTdDg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
