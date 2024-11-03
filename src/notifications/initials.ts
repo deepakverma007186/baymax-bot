@@ -35,6 +35,7 @@ export const displayNotifications = async (
           title: 'Okay',
           pressAction: {
             id: categoryId,
+            launchActivity: 'default',
           },
         },
       ],
