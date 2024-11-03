@@ -12,7 +12,8 @@
       "@state/*": ["state/*"],
       "@styles/*": ["styles/*"],
       "@utils/*": ["utils/*"],
-      "@hooks/*": ["hooks/*"]
+      "@hooks/*": ["hooks/*"],
+      "@notifications/*": ["notifications/*"]
     }
   }
 }

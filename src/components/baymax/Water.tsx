@@ -44,6 +44,9 @@ const Water = (props: Props) => {
       const timestamp = new Date().toISOString();
       addWaterIntake(timestamp);
       playSound('tingOne');
+      setTimeout(() => {
+        playTTS('Good Work! Stay Hydrated');
+      }, 1000);
     } else {
       playTTS('You have completed your daily water intake!');
     }

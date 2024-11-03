@@ -15,6 +15,7 @@ module.exports = {
           '@styles': './src/styles',
           '@utils': './src/utils',
           '@hooks': './src/hooks',
+          '@notifications': './src/notifications',
         },
       },
     ],
